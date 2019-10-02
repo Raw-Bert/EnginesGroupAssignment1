@@ -404,8 +404,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 749000941}
-  - component: {fileID: 749000940}
   - component: {fileID: 749000942}
+  - component: {fileID: 749000940}
   m_Layer: 0
   m_Name: ObjectSpawn
   m_TagString: Untagged
@@ -422,16 +422,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 749000939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63696f3fcbf106e4f96787787d7e3f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: f482216ce3c63944cb571487a12f5c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   createKey: 101
-  finalizeKey: 13
+  finalizeKey: 0
   selectKey: 50
+  playKey: 112
   platform: {fileID: 4479225255975843147, guid: f2603816e9bc4bd4cb8d09f99dc2a421,
     type: 3}
   finishPlatform: {fileID: 8723436166485867797, guid: 40fbf8967a207314da7c8c025dacb0ba,
     type: 3}
+  playerActive: 0
 --- !u!4 &749000941
 Transform:
   m_ObjectHideFlags: 0
