@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //const string DLL_NAME = "TestPlugin";
     //[DllImport(DLL_NAME)]    private static extern int SimpleFunction();
-    public bool playerActive = false;
+    //public bool playerActive = false;
     
     public float speed;
     // Start is called before the first frame update
@@ -19,10 +19,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerActive)
-        
+        if(AddObject.playerActive)
         {
-            Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 dir = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
             transform.position += dir * speed;
         }
 
