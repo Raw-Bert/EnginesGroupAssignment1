@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(AddObject.playerActive)
         {
-            Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 dir = new Vector3(-Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"));
             transform.position += dir * speed;
         }
 
