@@ -65,6 +65,7 @@ public class AddObject : MonoBehaviour
                     platformCopy.Add(Instantiate(finishPlatform));
                     platformCount.Add(0);
                     platformCopy[platformCopy.Count - 1].transform.position = transform.position;
+                    finishPlat += 1;
                 }
                 else
                     Debug.Log("Platform already placed");
