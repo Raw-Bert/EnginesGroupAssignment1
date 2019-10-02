@@ -8,7 +8,7 @@ public class ObjectMakerMovement : MonoBehaviour
     public float speed;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,8 +16,11 @@ public class ObjectMakerMovement : MonoBehaviour
     {
         //if (!playerActive)
         //{
+        if (!AddObject.playerActive)
+        {
             Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             transform.position += dir * speed;
+        }
         //}
     }
 }

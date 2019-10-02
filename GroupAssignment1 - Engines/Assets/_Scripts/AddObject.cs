@@ -14,7 +14,7 @@ public class AddObject : MonoBehaviour
     int Selection = 0;
     bool keyPressed = false;
     float timer = 0;
-    public bool playerActive = false;
+    public static bool playerActive = false;
 
 
     IList<GameObject> platformCopy = new List<GameObject>();
