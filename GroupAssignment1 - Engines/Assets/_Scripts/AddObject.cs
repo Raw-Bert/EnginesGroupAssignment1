@@ -15,6 +15,7 @@ public class AddObject : MonoBehaviour
     bool keyPressed = false;
     float timer = 0;
     public static bool playerActive = false;
+    public static bool cameraChange = false;
 
 
     IList<GameObject> platformCopy = new List<GameObject>();
@@ -32,6 +33,8 @@ public class AddObject : MonoBehaviour
         if (Input.GetKeyDown(playKey))
         {
              playerActive = true;
+             //(gameObject.GameCamera).camera.enabled = true;
+             cameraChange = true;
         }
         else
         {
