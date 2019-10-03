@@ -30,4 +30,17 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(SimpleFunction());        
         //}
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Spikes"))
+            {
+                //Player respawns
+
+            }
+        else if (other.gameObject.CompareTag("Finish"))
+            {
+                //Player Wins
+            }
+    }
 }
