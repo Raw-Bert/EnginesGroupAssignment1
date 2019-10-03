@@ -7,9 +7,14 @@ public class AddObject : MonoBehaviour
     public KeyCode createKey;
     public KeyCode finalizeKey;
     public KeyCode selectKey;
+    public KeyCode oneKey;
+    public KeyCode twoKey;
+    public KeyCode threeKey;
+
     public KeyCode playKey;
     public GameObject platform;
     public GameObject finishPlatform;
+    public GameObject spikes;
     int finishPlat = 0;
     int Selection = 0;
     bool keyPressed = false;
@@ -38,13 +43,23 @@ public class AddObject : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(selectKey))
+            if (Input.GetKeyDown(oneKey))
             {
-                Selection += 1;
+                Selection = 1;
+                Debug.Log(Selection);
+            }
+            else if (Input.GetKeyDown(twoKey))
+            {
+                Selection = 2;
+                Debug.Log(Selection);
+            }
+            else if (Input.GetKeyDown(threeKey))
+            {
+                Selection = 3;
                 Debug.Log(Selection);
             }
 
-            if (Selection == 0)
+            if (Selection == 1)
             {
                 if (Input.GetKeyDown(createKey))
                 {
@@ -55,7 +70,7 @@ public class AddObject : MonoBehaviour
                 }
             }
 
-            else if (Selection >= 1)
+            else if (Selection == 2)
             {
                 if (Input.GetKeyDown(createKey))
                 {
@@ -70,6 +85,16 @@ public class AddObject : MonoBehaviour
                         Debug.Log("Platform already placed");
                 }
 
+            }
+            else if (Selection == 3)
+            {
+                if (Input.GetKeyDown(createKey))
+                {
+                    platformCopy.Add(Instantiate(spikes));
+                    platformCount.Add(0);
+
+                    platformCopy[platformCopy.Count - 1].transform.position = transform.position;
+                }
             }
         }
 

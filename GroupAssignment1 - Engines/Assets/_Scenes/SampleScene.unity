@@ -428,11 +428,15 @@ MonoBehaviour:
   createKey: 101
   finalizeKey: 0
   selectKey: 50
+  oneKey: 49
+  twoKey: 50
+  threeKey: 51
   playKey: 112
   platform: {fileID: 4479225255975843147, guid: f2603816e9bc4bd4cb8d09f99dc2a421,
     type: 3}
   finishPlatform: {fileID: 8723436166485867797, guid: 40fbf8967a207314da7c8c025dacb0ba,
     type: 3}
+  spikes: {fileID: 8162348958429399469, guid: d2cd6ff179016e0479bb398c5a04f71b, type: 3}
 --- !u!4 &749000941
 Transform:
   m_ObjectHideFlags: 0
@@ -525,7 +529,6 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
-  - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: LevelCamera
@@ -534,14 +537,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &963194226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
