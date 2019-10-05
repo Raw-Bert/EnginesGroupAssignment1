@@ -7,13 +7,15 @@ public class PlayerCameraMovement : MonoBehaviour
     // Start is called before the first frame update
     //var gameCamera : Camera;
     //var sceneCamera : Camera;
-    public Transform PlayerTransform;
-    public float MaxSpeed = 1;
+    //public Transform PlayerTransform;
+    //public float MaxSpeed = 1;
 
-    private Vector3 _cameraOffset;
+    private Vector3 offset;
+    public GameObject player;
+    //private Vector3 _cameraOffset;
 
-    [Range(0.01f, 1.0f)]
-    public float SmoothFactor = 0.5f;
+    //[Range(0.01f, 1.0f)]
+    //public float SmoothFactor = 0.5f;
     public Camera sceneCamera;
     //This is the second Camera and is assigned in inspector
     public Camera gameCamera;
@@ -25,6 +27,8 @@ public class PlayerCameraMovement : MonoBehaviour
         sceneCamera.enabled = true;
         //Use this to disable secondary Camera
         gameCamera.enabled = false;
+        //_cameraOffset = transform.position - player.transform.position;
+        offset = transform.position - player.transform.position;
     }
 
     // Update is called once per frame
@@ -35,19 +39,15 @@ public class PlayerCameraMovement : MonoBehaviour
             sceneCamera.enabled = false;
             gameCamera.enabled = true;
             //gameCamera = Camera.main;
-            var x = Input.GetAxis("Horizontal");
-            var y = Input.GetAxis("Vertical");
+            //var x = Input.GetAxis("Horizontal");
+            //var y = Input.GetAxis("Vertical");
 
-            move(x, y);
+            //move(x, y);
 
-            Vector3 newPos = PlayerTransform.position + _cameraOffset;
-            transform.position = Vector3.Slerp(transform.position, newPos, SmoothFactor);
+            //offset = transform.position - player.transform.position;
+            //Vector3 newPos = player.transform.position + _cameraOffset;
+            //transform.position = Vector3.Slerp(transform.position, newPos, SmoothFactor);
+            gameCamera.transform.position = player.transform.position + offset;
         }
     }
-    private void move(float x, float y)
-    {
-        transform.position += (Vector3.forward * MaxSpeed) * y * Time.deltaTime;
-        transform.position += (Vector3.right * MaxSpeed) * x * Time.deltaTime;
-    }
-
 }

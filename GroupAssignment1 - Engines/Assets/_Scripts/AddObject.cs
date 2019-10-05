@@ -10,18 +10,23 @@ public class AddObject : MonoBehaviour
     public KeyCode oneKey;
     public KeyCode twoKey;
     public KeyCode threeKey;
+    public KeyCode fourKey;
+
 
     public KeyCode playKey;
     public GameObject platform;
     public GameObject finishPlatform;
     public GameObject spikes;
+
+    public GameObject spawner;
     int finishPlat = 0;
     int Selection = 0;
-    bool keyPressed = false;
-    float timer = 0;
+    //bool keyPressed = false;
+    //float timer = 0;
     public static bool playerActive = false;
     public static bool cameraChange = false;
 
+    //private Vector3 add;
 
     IList<GameObject> platformCopy = new List<GameObject>();
     IList<float> platformCount = new List<float>();
@@ -29,7 +34,7 @@ public class AddObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -56,6 +61,11 @@ public class AddObject : MonoBehaviour
             else if (Input.GetKeyDown(threeKey))
             {
                 Selection = 3;
+                Debug.Log(Selection);
+            }
+            else if (Input.GetKeyDown(fourKey))
+            {
+                Selection = 4;
                 Debug.Log(Selection);
             }
 
@@ -94,6 +104,16 @@ public class AddObject : MonoBehaviour
                     platformCount.Add(0);
 
                     platformCopy[platformCopy.Count - 1].transform.position = transform.position;
+                }
+            }
+            else if (Selection == 4)
+            {
+                if (Input.GetKeyDown(createKey))
+                {
+                    platformCopy.Add(Instantiate(spawner));
+                    platformCount.Add(0);
+
+                    platformCopy[platformCopy.Count - 1].transform.position = transform.position + new Vector3(0,0.5f,0);
                 }
             }
         }
