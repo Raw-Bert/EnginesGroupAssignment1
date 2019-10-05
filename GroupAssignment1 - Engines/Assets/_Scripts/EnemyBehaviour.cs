@@ -6,7 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
-
+    Vector3 direction;
     //State pattern enum
     public enum enemyState
     {
@@ -14,13 +14,16 @@ public class EnemyBehaviour : MonoBehaviour
         Attack
 
     }
-
+    private Rigidbody r;
     public Transform player;
     public enemyState enemyMode;
+
+    Vector3 movement;
     void Start()
     {
         enemyMode = enemyState.Move;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        r = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,10 @@ public class EnemyBehaviour : MonoBehaviour
 
         check(enemyMode);
     }
+    private void FixedUpdate()
+    {
+        MoveEnemy(movement);
+    }
     float DistanceThisPlayer()
     {
         return Vector3.Distance(transform.position, player.transform.position);
@@ -46,27 +53,39 @@ public class EnemyBehaviour : MonoBehaviour
         switch (enemyMode)
         {
             case enemyState.Move:
-                //If not close to player, move in a direction
-                if (DistanceThisPlayer() < 10)
+                //If not close to player, do nothing
+                if (DistanceThisPlayer() < 5)
                 {
                     enemyMode = enemyState.Attack;
-                    //Debug.Log("Player is " + DistanceThisPlayer().ToString());
+                    Debug.Log("Attack Mode");
+                    //break;
                 }
                 //transform.LookAt(other.gameObject.transform);
 
                 break;
             case enemyState.Attack:
                 //If close to player, seek player
-
-                if (DistanceThisPlayer() > 10)
-                {
-                    enemyMode = enemyState.Move;
-                }
+                Vector3 direction = player.position - transform.position; 
+                direction.Normalize();
+                movement = direction;
                 transform.LookAt(player.gameObject.transform);
                 transform.position += transform.forward * speed * Time.deltaTime;
+                
+
+                if (DistanceThisPlayer() > 5)
+                {
+                    enemyMode = enemyState.Move;
+                    //Debug.Log("Stationary/Move Mode");
+                    //break;
+                }
 
                 break;
 
         }
+    }
+    
+    void MoveEnemy(Vector3 direction)
+    {
+        r.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
     }
 }

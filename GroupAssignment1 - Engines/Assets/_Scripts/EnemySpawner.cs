@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         
             enemyCopy.Add(Instantiate(enemy));
             enemyCount.Add(0);
-            enemyCopy[enemyCopy.Count - 1].transform.position = transform.position;
+            enemyCopy[enemyCopy.Count - 1].transform.position = transform.position + new Vector3(0,0.3f,0.7f);
             enemies += 1;
             enemySpawn = false;
             Debug.Log(enemies);
