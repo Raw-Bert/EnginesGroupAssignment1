@@ -6,49 +6,63 @@ public class EnemyBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
-        public enum enemyState
+
+    //State pattern enum
+    public enum enemyState
     {
         Move,
         Attack
 
     }
 
-    
+    public Transform player;
     public enemyState enemyMode;
     void Start()
     {
         enemyMode = enemyState.Move;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
-    void Update(enemyState enemyMode, Collider other)
+    void Update()
     {
         //Destroy if falls off
         if (transform.position.y < 0)
         {
             Destroy(gameObject);
         }
+        Debug.Log("Player is " + DistanceThisPlayer().ToString());
+
+        check(enemyMode);
+    }
+    float DistanceThisPlayer()
+    {
+        return Vector3.Distance(transform.position, player.transform.position);
+    }
+
+    void check(enemyState enemyMode)
+    {
+        //State Pattern switch break statement
         switch (enemyMode)
         {
             case enemyState.Move:
-            //If not close to player, move in a direction
-            if(other.CompareTag("Player"))
-                if(Vector3.Distance(other.gameObject.transform.position, transform.position) < 10)  
+                //If not close to player, move in a direction
+                if (DistanceThisPlayer() < 10)
                 {
                     enemyMode = enemyState.Attack;
-                    Debug.Log("AttackState");
-                } 
+                    //Debug.Log("Player is " + DistanceThisPlayer().ToString());
+                }
                 //transform.LookAt(other.gameObject.transform);
 
                 break;
             case enemyState.Attack:
-            //If close to player, seek player
-            if(other.CompareTag("Player"))
-                if(Vector3.Distance(other.gameObject.transform.position, transform.position) > 10)  
+                //If close to player, seek player
+
+                if (DistanceThisPlayer() > 10)
                 {
                     enemyMode = enemyState.Move;
-                } 
-                transform.LookAt(other.gameObject.transform);
+                }
+                transform.LookAt(player.gameObject.transform);
                 transform.position += transform.forward * speed * Time.deltaTime;
 
                 break;

@@ -103,7 +103,7 @@ public class AddObject : MonoBehaviour
                     platformCopy.Add(Instantiate(spikes));
                     platformCount.Add(0);
 
-                    platformCopy[platformCopy.Count - 1].transform.position = transform.position;
+                    platformCopy[platformCopy.Count - 1].transform.position = transform.position + new Vector3(0,0.5f,0);
                 }
             }
             else if (Selection == 4)
