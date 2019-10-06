@@ -65,6 +65,8 @@ public class EnemyBehaviour : MonoBehaviour
                 break;
             case enemyState.Attack:
                 //If close to player, seek player
+
+                //The next 4 lines are from Youtube video https://www.youtube.com/watch?v=4Wh22ynlLyk&t=304s
                 Vector3 direction = player.position - transform.position; 
                 direction.Normalize();
                 movement = direction;
@@ -84,8 +86,10 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
     
+    //From Youtube vieo: https://www.youtube.com/watch?v=4Wh22ynlLyk&t=304s
     void MoveEnemy(Vector3 direction)
     {
+    
         r.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
     }
 }
